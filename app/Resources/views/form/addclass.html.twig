@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'form/form_theme.html.twig' %}
+
+{% block title %}
+    Ajouter une classe
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/form.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    <section class="row">
+        <div class="col-md-12">
+            {% if error == 1 %}
+                {% include 'form/error.html.twig' %}
+                {{ block('Error') }}
+            {% endif %}
+            {{ form_start(form, {'method': 'post', 'action': path('addclass')}) }}
+               <table>
+                   <h2>Ajouter une classe</h2>
+                   {{ form_row(form.nom) }}
+                   {{ form_row(form.annee) }}
+               </table>
+                <p>
+                    <input type="submit" value="enregistrer" />
+                    <button><a href="{{ path('index') }}">Annuler</a></button>
+                </p>
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock %}

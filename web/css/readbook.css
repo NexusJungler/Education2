@@ -1,0 +1,151 @@
+article {
+    border: 2px solid yellow;
+    padding: 1rem 1rem 3rem 1rem;
+    background-color: beige;
+}
+.photo {
+    width:20%;
+    height:20%;
+    margin-left: 15%;
+}
+article img {
+    height: 100%;
+    border: 2px solid black;
+    margin-right: 5rem;
+}
+article h2, section h2 {
+    font-family: "Times New Roman";
+    font-size: 3.6rem;
+}
+.info {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    font-weight: bold;
+    text-align: inherit;
+    line-height: 0.75;
+}
+.info span {
+    color:blue;
+}
+.info p {
+    padding-bottom: 0.45rem;
+}
+section>article {
+    border: 2px solid black;
+    height:57rem;
+    background-color: pink;
+    padding: 2rem 0 2rem 4rem;
+    margin: 0 2rem 0 1rem;
+}
+aside nav {
+    margin-top: 3rem;
+    text-align: center;
+    border: 1px solid red;
+    line-height: 0.75;
+}
+aside nav select {
+    font-size: 1.5rem;
+    width: 80%;
+    margin-bottom: 2rem;
+}
+aside nav label {
+    font-size: 3rem;
+}
+aside nav p:first-child {
+    margin-top: 2rem;
+}
+
+.tableread {
+    height:100%;
+    overflow:scroll;
+    overflow-x:hidden;
+}
+.fleche {
+    background-image: url("../images/Chevron1.png");
+    background-size: 100% 100%;
+    width:45px;
+    height:45px;
+    margin-left: 25%;
+    transform: rotate(90deg);
+    display: inline-block;
+}
+.droite {
+    transform: rotate(270deg);
+}
+.fleche:hover {
+    background-image: url("../images/Chevron2.png");
+}
+
+th {
+    border-bottom:4px solid blue;
+    padding-top: 0.5rem;
+    font-size: 2rem;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+th:nth-child(2) {
+    border-bottom: inherit;
+    border-left:4px solid blue;
+    border-right: 4px solid blue;
+}
+td {
+    text-align: center;
+    padding-top: 0.5rem;
+    vertical-align: middle;
+    height: 90px;
+}
+td:first-child {
+    width:55%;
+    text-align: inherit;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    vertical-align: top;
+}
+td:nth-child(2) {
+    border-left: 4px solid blue;
+    border-right: 4px solid blue;
+}
+th:last-child {
+    width:40%;
+}
+td .false {
+    font-size: 4rem;
+    color:red;
+}
+.date {
+    color: green;
+    font-weight: bold;
+    font-size: 1.75rem;
+    padding-top: inherit;
+}
+.date td {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: 10rem;
+}
+.date td:nth-child(2){
+    border:none;
+}
+.date td:first-child {
+    vertical-align: middle;
+}
+
+/************ Responsive ***********/
+@media screen and (max-width:1200px) and (min-width:990px) {
+    .photo {
+        margin-left: 3%;
+    }
+    article img {
+        margin-right: 2rem;
+    }
+}
+@media screen and (max-width:990px) {
+    aside nav {
+        margin-bottom: 3rem;
+    }
+}
+@media screen and (max-width:475px) {
+    section {
+        width: 450px;
+    }
+}

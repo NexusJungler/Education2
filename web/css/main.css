@@ -1,0 +1,69 @@
+
+/************* General Tags *************/
+body {
+    background-color: black;
+}
+header {
+    background: url("../images/trinity-college.jpg");
+    background-size: 100% 100%;
+    height: 500px;
+}
+section {
+    background-color: beige;
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+}
+h1, h2,  form p {
+    text-align: center;
+}
+h1 {
+    font-size: 5rem;
+    color:black;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-top: 4px solid black;
+    border-bottom: 4px solid black;
+    margin-bottom: 2rem;
+}
+h2 {
+    font-size: 2rem;
+    font-family: cursive;
+    margin-bottom: 3rem;
+    text-decoration: underline;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+img {
+    float: left;
+}
+footer {
+    padding-top:2rem;
+    padding-bottom: 2rem;
+    background-color: #b2dba1;
+    font-size: 4rem;
+    text-align: center;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+/************* classes  *************/
+.connexion {
+    float: right;
+    color: blue;
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+}
+.connexion:hover {
+    cursor: default;
+}
+
+
+/************ Responsive ***********/
+@media screen and (max-width:767px) {
+    header {
+        height: 330px;
+        background: url("../images/rentree.jpg") no-repeat;
+    }
+}

@@ -7,3 +7,19 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app_service:
+        class: AppBundle\Controller\MainController
+        shared: true
+        arguments:
+            container: "@service_container"
+        calls:
+            - [setContainer, ["@service_container"]]
+
+#FatalErrorException: Error: Call to a member function has() on a non-object in
+# if (!$this->container->has('doctrine')) {
+#              throw new \LogicException('The DoctrineBundle is not registered in your application.');
+#       }
+#The problem is the container not being injected into the controller here.
+#Normally symfony does this automatically if youre extending Symfony\Bundle\FrameworkBundle\Controller\Controller which itself extends Symfony\Component\DependencyInjection\ContainerAware.
+ #The container is injected into the controller (if not explicitely defined as a service) using setter injection calling the method setContainer() with the container as argument.
+ #Now as you configured your controller as a service you need to add the setContainer call to your service configuration.

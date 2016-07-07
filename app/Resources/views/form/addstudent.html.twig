@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'form/form_theme.html.twig' %}
+
+{% block title %}
+    Ajouter un eleve
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/form.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    <section class="row">
+        <div class="col-md-12">
+            {% if error == 1 %}
+                {% include 'form/error.html.twig' %}
+                {{ block('Error') }}
+            {% endif %}
+
+            {#      form_row  content
+            {{ form_label(form.field, 'Label_Intitule', {'label_attr': {'class': 'Class_Name'}}) }}
+            {{ form_errors(form.field) }}    Impossible de passer des variables à cette fonction!
+            {{ form_widget(form.field, {'attr': {'class': 'Class_Name'}}) }}
+                    pour générer un attribut classe dynamiquement  (pas très utile)
+            {{ attributes.addClass(classe) }}
+             #}
+
+            {{ form_start(form, {'method': 'post', 'action': path('addstudent')}) }}
+            <table>
+                <h2>Ajouter un eleve</h2>
+                {{ form_row(form.nom, {'attr': {'maxlength':30}}) }}
+                {{ form_row(form.prenom, {'attr': {'maxlength':30}}) }}
+                {{ form_row(form.classe) }}
+                {{ form_row(form.numero, {'attr': {'min':1, 'max':999}}) }}
+                {{ form_row(form.voie) }}
+                {{ form_row(form.complement, {'label': 'Complément', 'attr': {'maxlength':25}}) }}
+                {{ form_row(form.codepost, {'attr': {'min':10000, 'max':99999}}) }}
+                {{ form_row(form.ville, {'attr': {'maxlength':20}}) }}
+                {{ form_row(form.age, {'label': 'Anniversaire'}) }}
+                {{ form_row(form.photo) }}
+                {{ form_rest(form) }}
+            </table>
+            <p>
+                <input type="submit" value="enregistrer" />
+                <button><a href="{{ path('index') }}">Annuler</a></button>
+            </p>
+        {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock %}

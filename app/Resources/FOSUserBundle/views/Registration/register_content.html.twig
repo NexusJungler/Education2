@@ -1,0 +1,15 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{#  use "form_table_layout.html.twig" #}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+       <table>
+           {{ form_row(form.username) }}
+           {{ form_row(form.plainPassword.first) }}
+           {{ form_row(form.plainPassword.second) }}
+        </table>
+    <p>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+        <button><a href="{{ path('index') }}">Annuler</a></button>
+    </p>
+</form>
+

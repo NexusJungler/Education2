@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Livrets
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/readbook.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/url.min.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+        <section class="row">
+
+            <aside class="col-md-5">
+                <article>
+                    <h2>CLASSE {{ classname }}</h2>
+
+                    <div class="photo">
+                        <img src="{{ asset('upload/' ~ content.photo ) }}">
+                    </div>
+                    <div class="info">
+                        <p>Nom: <span>{{ content.nom }}</span></p>
+                        <p>Prénom: <span>{{ content.prenom }}</span></p>
+                        <p>Adresse: <span>{{ content.numero }} {{ content.voie }}</span></p>
+                        <p><span>{{ content.complement }}</span></p>
+                        <p><span>{{ content.codepost }} {{ content.nom }}</span></p>
+                        <p>Age: <span>{{ age.format('%Y ans et %m mois') }}</span></p>
+                        <p>Réussite: <span>{{ success }} % </span></p>
+                        <div class="fleche"></div>
+                        <div class="fleche droite"></div>
+                    </div>
+                </article>
+
+                <nav>
+                    <p><label for="S1">DISCIPLINE</label></p>
+                    <p><select id="S1" >
+                        <option></option>
+                        {% for discipline in dcps %}
+                            <option>{{ discipline.intitule }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="S2">CATEGORIE</label>
+                    <select id="S2"></select></p>
+                </nav>
+            </aside>
+
+            <article class="col-md-6">
+                <div class="tableread">
+                    <h2>Tableau de validation</h2>
+                </div>
+            </article>
+
+        </section>
+
+{% endblock %}

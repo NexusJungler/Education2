@@ -1,0 +1,12 @@
+{% block Error %}
+    {% spaceless %}
+        <article>
+            <h1>Formulaire invalide</h1>
+            <div>
+                {% for child in form %}
+                    {{ form_errors(child) }}
+                {% endfor %}
+            </div>
+        </article>
+    {% endspaceless %}
+{% endblock %}

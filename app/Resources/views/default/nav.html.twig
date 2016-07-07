@@ -1,0 +1,64 @@
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <style type="text/css">
+           @import url(
+        {{ asset('css/nav.css') }}
+           );
+    </style>
+          <div class="row">
+            <nav class="navbar navbar-inverse" role="navigation" id="topmenu">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand">Easy Master Skill</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuration</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('addclass') }}">Ajouter une classe</a></li>
+                                <li><a href="{{ path('addstudent') }}">Ajouter un élève</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ path('readdoc') }}">Soumettre une évaluation</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Livrets de compétences</a>
+                            <ul class="dropdown-menu">
+                                {% for name, classe in classes %}
+                                    <li class="dropdown-submenu">
+                                        {% if classe|length > 0 %}
+                                            <a href="{{ path('readbook', {'id': classe[0]['id']}) }}">classe {{ name }}</a>
+                                            <ul class="dropdown-menu">
+                                                {% for eleve in classe %}
+                                                    <li data-id="{{ eleve.id }}">
+                                                        <a href="{{ path('readbook', {'id': eleve.id}) }}">{{ eleve.prenom }} {{ eleve.nom }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% else %}
+                                            <a href="#">classe {{ name }}</a>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Outils</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Afficher le graphique des compétences</a></li>
+                                <li><a href="{{ path('createdoc') }}">Editer un document d'évaluation</a></li>
+                                <li><a href="#">Exporter le livret de l'élève</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+          </div>
+{% endif %}
+
+

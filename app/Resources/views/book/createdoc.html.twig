@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Creation
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/createdoc.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/create.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <section class="row">
+        <div class="col-lg-12">
+            <nav>
+                <p>
+                    <label for="S1">DISCIPLINE</label>
+                </p>
+                <p>
+                    <select id="S1" >
+                        <option></option>
+                        {% for discipline in dcps %}
+                            <option>{{ discipline.intitule }}</option>
+                        {% endfor %}
+                    </select>
+                </p>
+                <p>
+                    <label for="S2">CATEGORIE</label>
+                </p>
+                <p>
+                    <select id="S2"></select>
+                </p>
+                <p>
+                    <label for="S3">COMPETENCE</label>
+                </p>
+                <p>
+                    <select id="S3"></select>
+                </p>
+            </nav>
+            <article>
+                <div class="tableread">
+                    <h3>Edition Document</h3>
+                    <table>
+                        <th></th>
+                        <th>DISCIPLINE</th>
+                        <th>CATEGORIE</th>
+                        <th>COMPETENCE</th>
+                    </table>
+                </div>
+            </article>
+        </div>
+    </section>
+    <button id="datapdf">Enregistrer</button>
+    <label for="classe">CLASSE</label>
+    <select id="classe">
+        {% for classe in clid %}
+            <option data-id="{{ classe.id }}">{{ classe.nom }}</option>
+        {% endfor %}
+    </select>
+    <form name="selection" method="post" action="{{ path('sendpdf') }}">
+        <input type="hidden" name="doc"/>
+    </form>
+
+{% endblock %}
